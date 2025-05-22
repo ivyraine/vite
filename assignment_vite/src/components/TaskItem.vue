@@ -21,18 +21,38 @@
             <div class="right_block">
             <div class="btn_flex">
                 <button type="button" class="btn_update" @click="$emit('taskEdit', $event, index)">更新</button>
-                <button type="button" class="btn_delete">移除</button>
+                <button type="button" class="btn_delete" @click="$emit('taskRemove', $event, index)">移除</button>
             </div>
             </div>
         </div>
     </li>
 </template>
 
+<!-- option API
 <script>
   export default {
     props: ["tasks"],
-    emits: ["taskEdit", "taskStar", "taskSwap"]
+    emits: ["taskEdit", "taskStar", "taskSwap", "taskRemove"]
+    // methods: {
+    //   taskRemove(e, i){
+    //     // alert("yyy");
+    //     this.tasks.splice(i, 1);
+
+
+    //     //複習
+    //     //let arr = ["a", "b", "c"];
+    //     //arr.splice(1, 1); //刪掉中間的資料 增加用push 
+    //   }
+    // }
   }
+</script>
+-->
+
+<!-- composition API-->
+<script setup>
+  defineProps(["tasks"]);
+  defineEmits(["taskEdit", "taskStar", "taskSwap", "taskRemove"]);
+  
 </script>
 
 <style lang="sass" scoped>
