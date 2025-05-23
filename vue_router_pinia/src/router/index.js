@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";  // 網址/a/b/c
 
 // path → component
 const routes = [
@@ -14,7 +14,7 @@ const routes = [
     component: () => import('@/pages/AboutView.vue'),
     meta: {
       title: '關於我們',
-      requiredLogin: true
+      requiredLogin: true  //要登入才可以瀏覽
 
     }
    },
@@ -34,7 +34,7 @@ const router = createRouter({
   routes: routes
 });
 
-router.beforeEach((to, from, next) => { // 記得加第三個參數 next
+router.beforeEach(async (to, from, next) => { // 記得加第三個參數 next
   //console.log(to);   // 連到目前的網址的物件資料
   //console.log(from); // 從哪個網址連過來的物件資料
 
@@ -42,7 +42,12 @@ router.beforeEach((to, from, next) => { // 記得加第三個參數 next
     
     // ======= 以下要取得使用者目前的登入狀態，會是 bool == //
     // 取得是否已登入，可能是從 localStorage 抓資料或從後端判斷。
-    let isAuthenticated = true;
+    // let isAuthenticated = true;
+
+    const res = await fetch("https://notes.webmix.cc/login_test/login.php");
+    const data = await res.json();
+    let isAuthenticated = data.login_status;
+    
     // ============================================== //
 
     if(isAuthenticated){

@@ -4,11 +4,19 @@
     <!-- <br> -->
     <!-- 接網址問號後面 -->
     <!-- {{ $route.query.page }} -->
+    <button type="button" @click="cart.getData">執行 getData() 函式。計算屬性：{{ cart.buyCount }}</button>
   </div>
 </template>
 
 <script>
+  import { useCartStore } from "@/stores/Cart.js";
+
   export default {
+    data(){
+      return {
+        cart: useCartStore()
+      };
+    },
     mounted(){
 
       document.title = `文章 ${this.$route.params.id}`;
