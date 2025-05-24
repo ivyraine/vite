@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <h1>test</h1>
+
+  <div id="app">
+    {{ message }}
+  </div>
+
+  <script src="./vendors/vue/vue.global.js"></script>
+  <!-- <script src="./vendors/vue/vue.global.prod.js"></script> -->
+
+  <script>
+    const app = Vue.createApp({
+      setup() {
+        const message = Vue.ref("Hello Vue!!");
+
+        return {
+          // message: message 
+          message //可寫一遍就好
+        };
+      }
+    });
+
+    app.mount('#app');
+
+    // const app = Vue.createApp({
+    //   setup(){
+    //     const message = Vue.ref("哈囉 Vue !!");
+
+    //     return {
+    //       message: message
+    //     };
+    //   }
+    // });
+
+    // app.mount("#app");
+
+  </script>
+</body>
+
+</html>

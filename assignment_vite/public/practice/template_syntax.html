@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <div id="myapp">
+        訊息: {{ msg }}
+        <br>
+        使用 v-html：
+        <div :id="dynamicId" v-html="msg"></div>
+        <button type="button" :disabled="isDisabled" v-bind="btnOtherAttrs">按鈕</button>
+    </div>
+
+    <script src="./vendors/vue/vue.global.js"></script>
+    <!-- <script src="./vendors/vue/vue.global.prod.js"></script> -->
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    dynamicId: "the_id",
+                    msg: `<span style="color: red;">這是測試的文字</span>`,
+                    isDisabled: true,
+                    btnOtherAttrs: {
+                        id: "btn_id",
+                        class: "change_color"
+                    }
+                };
+            }
+        });
+        app.mount("#myapp");
+
+        // 以下是 Composition API 的寫法
+        /*
+        const app = Vue.createApp({
+          setup(){
+            // data
+            const msg = Vue.ref(`<span style="color: red;">這是測試的文字</span>`);
+            const dynamicId = Vue.ref("the_id");
+            const isDisabled = Vue.ref(true);
+            const btnOtherAttrs = Vue.ref({
+              id: "btn_id",
+              class: "change_color"
+            });
+  
+            return { msg, dynamicId, isDisabled, btnOtherAttrs };
+          }
+        });
+        app.mount("#myapp");
+        */
+    </script>
+</body>
+
+</html>

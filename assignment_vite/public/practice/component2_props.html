@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div id="my_block">
+      <text-only :greet-msg="hello"></text-only>
+    </div>
+
+    <script src="./vendors/vue/vue.global.js"></script>
+    <!-- <script src="./vendors/vue/vue.global.prod.js"></script> -->
+    
+    <script type="module">
+      import TextOnly from "./components/TextOnly.js";
+
+      const app = Vue.createApp({
+        data(){
+          return {
+            hello: "根元件的資料"
+          };
+        }
+      });
+
+      app.component("TextOnly", TextOnly);
+
+      app.mount("#my_block");
+    </script>
+  </body>
+</html>

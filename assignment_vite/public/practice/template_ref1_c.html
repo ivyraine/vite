@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+
+    <div id="app">
+        <input type="text" id="my_id" ref="username">
+    </div>
+
+    <script src="./vendors/vue/vue.global.js"></script>
+    <!-- <script src="./vendors/vue/vue.global.prod.js"></script> -->
+    <script>
+        const app = Vue.createApp({
+            setup() {
+
+                // 變數名稱要與 template 當中的 ref 值，設定成相同名稱
+                const username = Vue.ref(null); // 想成是 { value: 元素 }
+
+                Vue.onMounted(() => {
+                    console.log(username.value);
+                });
+
+                return { username };
+
+            }
+        });
+
+        app.mount("#app");
+    </script>
+</body>
+
+</html>

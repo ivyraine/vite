@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul.qa_list>li {
+            margin-bottom: 20px;
+        }
+
+        ul.qa_list>li div.q {
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 5px;
+        }
+
+        ul.qa_list>li:last-child {
+            margin-bottom: 0;
+        }
+
+        .important {
+            font-weight: bold;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <ul class="qa_list">
+            <li v-for="(item, i) in qa_items" :key="item.id" :class="{'important': item.is_important}">
+                <div class="q">Q{{i+1}}: {{item.q}}</div>
+                <div class="a">A: {{item.a}}</div>
+            </li>
+        </ul>
+    </div>
+
+    <script src="./vendors/vue/vue.global.js"></script>
+
+    <script>
+
+        Vue.createApp({
+            data() {
+                return {
+                    qa_items: [
+                        {
+                            id: "abc",
+                            q: "如何加入會員呢？",
+                            a: "臨櫃辦理。",
+                            is_important: false
+                        },
+                        {
+                            id: "def",
+                            q: "該如何繳費呢？",
+                            a: "持條碼至超商繳費。",
+                            is_important: true
+                        },
+                        {
+                            id: "ghi",
+                            q: "週末門市有開嗎？",
+                            a: "沒有，放假。",
+                            is_important: false
+                        }
+                    ],
+                }
+            },
+
+        }).mount("#app");
+
+    </script>
+</body>
+
+</html>

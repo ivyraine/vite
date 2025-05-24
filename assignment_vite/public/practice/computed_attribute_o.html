@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <div>原價：<span class="original_price"></span>{{ originalPrice}}元</div>
+        <div>特價：<span class="on_sale"></span>{{ onSale}}元</div>
+
+        <!-- 測試看看以下, 改變原價資料 -->
+        <input type="text" v-model="originalPrice">
+    </div>
+
+    <script src="./vendors/vue/vue.global.js"></script>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    originalPrice: 300
+                };
+            },
+
+            computed: {
+                onSale() {
+                    return this.originalPrice * 0.8
+                }
+            }
+
+        });
+        app.mount("#app");
+
+        // 東西少也可以這樣寫
+        // Vue.createApp({
+
+        // }).mount('#app');
+    </script>
+</body>
+
+</html>

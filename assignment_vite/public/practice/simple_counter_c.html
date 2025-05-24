@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .btn_counter {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="MyApp">
+        <button type="button" @click="plusOne" class="btn_counter">計數器：{{counter}}</button>
+        <button type="button" @click="plusOne" class="btn_counter">計數器：{{counter}}</button>
+    </div>
+    <!-- v-on:click太常用 可以直接寫成@click -->
+
+    <script src="./vendors/vue/vue.global.js"></script>
+    <script>
+        const app = Vue.createApp({
+            setup() {
+                const counter = Vue.ref(0); //{value: 0}
+
+                function plusOne() {
+                    // alert("yyy");
+                    // console.log(counter.value);
+                    counter.value++;
+                }
+                return { counter, plusOne };
+                // counter: counter  //plusOne: plusOne
+
+            }
+        });
+        app.mount('#MyApp');
+
+    </script>
+</body>
+
+</html>

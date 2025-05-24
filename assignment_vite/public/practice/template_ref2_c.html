@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+
+    <div id="app">
+        <ul>
+            <li v-for="(item, index) in msgs" ref="my_items" :key="item">{{ item }}</li>
+        </ul>
+    </div>
+
+    <script src="./vendors/vue/vue.global.js"></script>
+    <!-- <script src="./vendors/vue/vue.global.prod.js"></script> -->
+
+    <script>
+        const app = Vue.createApp({
+            setup() {
+                const msgs = Vue.ref(["a", "b", "c"]); // {value: ["a", "b", "c"]}
+                const my_items = Vue.ref(null); // {value: ["li", "li", "li"]}
+
+                Vue.onMounted(() => {
+                    console.log(my_items.value);
+
+                    for (let i = 0; i < my_items.value.length; i++) {
+                        console.log(my_items.value[i].innerHTML);
+                    }
+                });
+
+                return {
+                    msgs,
+                    my_items
+                };
+            }
+
+        });
+
+        app.mount("#app");
+    </script>
+</body>
+
+</html>

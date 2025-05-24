@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .btn_counter {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="MyApp">
+
+        <button type="button" v-on:click="plusOne" class="btn_counter">計數器：{{ counter}}</button>
+    </div>
+
+
+    <script src="./vendors/vue/vue.global.js"></script>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    counter: 0
+                };
+            },
+            methods: {
+                plusOne() {
+                    // alert("yyy");
+                    // console.log(this.counter);
+                    this.counter++;
+                    // this.counter+=1;  //別種寫法
+                    // this.counter = this.counter +1; //別種寫法
+                }
+            }
+        });
+
+        app.mount('#MyApp');
+
+        //Vue.createApp({
+        //hello2_o.html.mount('#MyApp');
+
+    </script>
+
+
+
+    <!-- JS 寫法
+    <script>
+        let counter = 0;
+        let btn_counter_el = document.getElementsByClassName("btn_counter")[0];
+
+        btn_counter_el.addEventListener("click", function(){
+            counter++;
+            this.innerHTML = `計數器: ${counter}`;
+        })
+    </script> -->
+
+</body>
+
+</html>

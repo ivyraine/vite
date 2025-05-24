@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>component5_slot</title>
+</head>
+
+<body>
+    <div id="myapp">
+
+        <alert-block></alert-block>
+
+        <alert-block>這是提示訊息</alert-block>
+
+        <alert-block v-slot="slotProps">
+            {{ slotProps.username }}: 這是提示訊息
+        </alert-block>
+
+    </div>
+
+    <script src="./vendors/vue/vue.global.js"></script>
+
+    <script type="module">
+        import AlertBlock from "./components/AlertBlock.js";
+
+        const app = Vue.createApp({});
+
+        app.component("AlertBlock", AlertBlock);
+        app.mount("#myapp");
+    </script>
+</body>
+
+</html>
