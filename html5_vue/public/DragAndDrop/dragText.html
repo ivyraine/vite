@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Drag & Drop -- text</title>    
+    <style>
+        ul.moveable{
+            list-style: none;
+        }
+        ul.moveable li{
+            border: 1px solid #ccc;
+            margin: 10px;
+            padding: 5px;
+            color: #666;
+            cursor: move;
+        }
+        ul.moveable li:hover{
+            background-color: #eee;
+        }
+    </style>
+</head>
+<body>
+    <ul class="moveable" id="item-list">
+        <li>One</li>
+        <li>Two</li>
+        <li>Three</li>
+        <li>Four</li>
+    </ul>
+
+    <script>
+        let items = document.querySelectorAll(`#item-list>li`)
+
+        // const startDrag = e => {
+        //     let index = Array.from(e.target.parentNode.children).indexOf(e.target)
+        //     // Array.from() 將 HTMLCollection 轉換成真的陣列型態(Array)
+        //     // 陣列型態才可以使用 indexOf()
+
+        //     e.dataTransfer.setData('text/plain', index)
+        // }
+        // const dropped = () => {}
+
+        items.forEach((item) => {
+            // $(item).prop('draggable', true)  // jQuery
+            item.setAttribute('draggable',true) // JavaScript -- draggable, false by default
+
+            item.addEventListener('dragstart', startDrag)
+            item.addEventListener('dragover', e => e.preventDefault())
+            item.addEventListener('drop', dropped)
+        })
+
+        function startDrag(e){
+            let index = Array.from(e.target.parentNode.children).indexOf(e.target)
+            // Array.from() 將 HTMLCollection 轉換成真的陣列型態(Array)
+            // 陣列型態才可以使用 indexOf()
+            // alert(index)
+
+            e.dataTransfer.setData('text/plain', index)
+        }
+
+        function dropped(e){
+            e.preventDefault()
+
+            let oldIndex = e.dataTransfer.getData('text/plain')
+
+            let items = Array.from(document.querySelectorAll(`#item-list>li`))
+            let newIndex = items.indexOf(e.target)
+            
+            let parent = e.target.parentNode
+            let draggedItem = items[oldIndex]
+
+            if(newIndex < oldIndex){
+                parent.insertBefore(draggedItem, e.target)
+            }else{
+                parent.insertBefore(draggedItem, e.target.nextSibling)
+            }
+        }
+
+    </script>
+</body>
+</html>

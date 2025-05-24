@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery UI: draggable</title>
+    <style>
+        /* *{
+            margin: 0;
+        } */
+        #box{
+            width: 400px;
+            height: 400px;
+            background-color: #ccc;
+        }
+        #drag{
+            width: 80px;
+            height: 80px;
+            background-color: #abc;
+
+            text-align: center;
+            line-height: 80px;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.14.1/jquery-ui.min.js"></script>
+</head>
+<body>
+    <div id="box">
+        <div id="drag">Drag me</div>
+    </div>
+    <p id="feedback"></p>
+
+    <script>
+        $(function(){
+            $('#drag').draggable({
+                // axis: 'x',
+                // revert: true,   // 回到原點
+
+                // 限制拖曳範圍
+                containment: 'parent',
+                // containment: 'window',
+                // containment: 'document',
+                // containment: [0, 0, 400, 400],
+
+                start(){
+                    $('#feedback').text('Dragging start.')
+                },
+                drag(){
+                    $('#feedback').text('Dragging.')
+                },
+                stop(){
+                    $('#feedback').text('Dragging stop.')
+                },
+
+
+                // scroll: false,
+                // drag(){
+                //     let dragPosition = $(this).css('left')
+                //     $('.cover').css('width', dragPosition)
+                // },
+            })
+        })        
+    </script>
+</body>
+</html>

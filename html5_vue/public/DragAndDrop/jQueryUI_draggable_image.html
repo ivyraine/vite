@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <title>Hamburger Menu</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .picture{
+            background: url(../../images/cityscape.jpg);
+            background-size: cover;
+            margin: 50px auto;
+            width: 800px;
+            height: 550px;
+            position: relative;
+        }
+        .cover{
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 50%;
+            background-color: #857C8D;
+            opacity: 0.5;
+        }
+        .drag{
+            position: absolute;            
+            background-color: #857C8D;
+            width: 10px;
+            height: 100%;
+            left: 50%;
+            top: 0;
+            cursor: ew-resize;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.14.1/jquery-ui.min.js"></script>
+    <script>
+        $(function(){
+            $('#drag').draggable({
+                axis: 'x',
+                containment: 'parent',
+                scroll: false,
+                drag(){
+                    let dragPosition = $(this).css('left')
+                    $('.cover').css('width', dragPosition)
+                },
+            })
+        })        
+    </script>
+</head>
+<body>
+    <div class="picture">
+        <div class="cover"></div>
+        <div class="drag" id="drag"></div>
+    </div>
+</body>
+</html>

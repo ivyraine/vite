@@ -1,4 +1,20 @@
+
+<template>
+    <!-- <DragAndDrop /> -->
+    <!-- <FileInfo /> -->
+    <TextRead />
+</template>
+
 <script setup>
+// import DragAndDrop from "./components/DragAndDrop.vue";
+// import FileInfo from "./components/FileInfo.vue";
+import TextRead from "./components/TextRead.vue";
+</script>
+
+
+
+
+<!-- <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 </script>
@@ -82,4 +98,4 @@ nav a:first-of-type {
     margin-top: 1rem;
   }
 }
-</style>
+</style> -->
