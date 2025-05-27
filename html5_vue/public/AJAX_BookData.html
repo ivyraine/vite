@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue 的非同步</title>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.9.0/axios.min.js"></script>
+    <style>
+        h1{ font-size: 18px; }
+        img{ width: 95%; }
+        .book{
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            width: 250px;
+            height: 400px;
+            margin: 10px;
+            padding: 10px;
+
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div v-for="book in books" class="book">
+            <a :href="book.url">
+                <img :src="book.image" alt="">
+            </a>
+            <h1>{{ book.title }}</h1>
+            <p>{{ book.author }}</p>
+        </div>
+    </div>
+
+    <script>
+        const { ref, onMounted } = Vue
+
+        const App = {
+            setup(){
+                const books = ref([])
+
+                onMounted(() => {   // 非同步放在生命週期的 onMounted() 階段
+                    // jQuery
+                    // $.getJSON('./bookData.json').then( res => {
+                    //     console.log(res)
+                    //     books.value = res
+                    // })
+
+                    // Axios
+                    // axios.get('./bookData.json').then( res => {
+                    //     console.log(res.data)
+                    //     books.value = res.data
+                    // })
+
+                    // fetch
+                    // fetch('./bookData.json').then( res => {
+                    //     console.log(res)
+                    //     console.log(res.json())
+                    // }).then( jsonData => {
+                    //     console.log(jsonData)
+                    // })
+
+                    // fetch('./bookData.json')
+                    //     .then( res => {
+                    //         return res.json()})
+                    //     .then( jsonData => {
+                    //         console.log(jsonData)
+                    //     })
+
+                    fetch('./bookData.json')
+                        .then( res =>  res.json())
+                        .then( jsonData => {
+                            console.log(jsonData)
+                            books.value = jsonData
+                        })
+
+                    // 參考 https://fakestoreapi.com/ 看看怎麼使用 fetch()
+                })
+
+                return {
+                    books,
+                }
+            },
+        }
+        Vue.createApp(App).mount('#app')
+    </script>
+</body>
+</html>

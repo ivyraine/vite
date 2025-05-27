@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Leaflet Map</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+
+    <style>
+        #map{
+            width: 600px;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+
+    <script>
+        function doFirst(){
+            // 地圖容器
+            const area = document.querySelector('#map')
+
+            // leaflet 地圖物件初始化
+            const map = L.map(area).setView([25.052175, 121.5432551], 18)
+        
+            // 加上地圖圖層(OpenStreetMap)
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+                attribution: '© OpenStreetMap contributors',
+                maxZoome: 20,
+            }).addTo(map)
+
+            //加上marker
+            const marker = L.marker([25.052175, 121.5432551]).addTo(map)
+            //加上標題和圖示
+            marker.bindPopup('<b>這是哪裡?<b><br>台北市南京東路三段 219 號').openPopup()
+            const icon = L.icon({
+                iconUrl: "../images/dgtp.gif",
+                iconSize: [32, 32], //圖示大小
+                iconAnchor: [16,32],    //中心點
+                popupAnchor: [0, -32],  //彈出框(popup)位置
+            })
+            marker.setIcon(icon)
+        }
+        window.addEventListener('load', doFirst)
+
+    </script>
+</body>
+</html>
+
+<!-- 
+緯度: 25.0642432
+經度: 121.5266816
+準確度: 7161.920226034394 公尺
+-->
+
+<!-- 
+layers
+controls
+services
+-->

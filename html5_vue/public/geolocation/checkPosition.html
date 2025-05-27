@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Check Position</title>
+</head>
+<body>
+    <div id="position"></div>
+    
+    
+    <script>
+        // const doFirst = () => {} //會有順序問題 要宣告完才可以用
+        function doFirst(){
+            navigator.geolocation.getCurrentPosition(succCallback, errorCallback, {
+               enableHighAccuracy: false, 
+               timeout: 10000,
+               maximumAge: 0,
+
+            })
+        }
+        function succCallback(e){
+            let lati = e.coords.latitude
+            let longi = e.coords.longitude
+            let accuracy = e.coords.accuracy
+
+            if(accuracy > 1000){
+                document.querySelector('#position').innerHTML = `超過偵測範圍`
+            }else{
+                document.querySelector('#position').innerHTML = `
+                緯度: ${lati} <br>
+                經度: ${longi} <br>
+                準確度: ${accuracy} 公尺
+                `
+            }
+
+        }
+        function errorCallback (e) {
+            document.querySelector('#position').innerHTML = `
+            錯誤碼: ${e.code} <br>
+            錯誤訊息: ${e.message} <br>
+            `
+
+        }
+        window.addEventListener('load', doFirst)
+
+    </script>
+</body>
+</html>
+
+<!-- 
+緯度: 25.0642432
+經度: 121.5266816
+準確度: 7161.920226034394 公尺
+-->
