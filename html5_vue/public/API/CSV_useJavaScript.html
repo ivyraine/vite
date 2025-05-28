@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSV to table using AJAX(JavaScript)</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <h1 align="center">CSV to table using AJAX(JavaScript)</h1>
+    <div align="center">
+        <button id="loadButton" class="btn btn-success">Load Data</button>
+    </div>
+
+    <div id="feedback" align="center"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            let loadButton = document.querySelector('#loadButton')
+            let feedbackDiv = document.querySelector('#feedback')
+
+            loadButton.addEventListener('click', () => {
+                // fetch('./XML_JSON_CSV/classmate.csv')
+                fetch('./XML_JSON_CSV/employee.csv')
+                    // .then( res => console.log(res))   
+                    .then( res => res.text())   // get the response as plain text
+                    .then( res => {
+                        // console.log(res)
+                        let resData = res.split(/\n|\r\n/) 
+                        let tableData = `<table class="table table-bordered table-striped">`
+                            for(let i = 0; i < resData.length; i++){
+
+                                let cellData = resData[i].split(',')
+
+                                tableData += `<tr>`
+                                    for(let j = 0; j < cellData.length; j++){
+                                        if(i == 0){
+                                            tableData += `<th>${cellData[j]}</th>`
+                                        }else{
+                                            tableData += `<td>${cellData[j]}</td>`
+                                        }
+                                    }
+                                tableData += `</tr>`
+                            }
+                        tableData += `</table>`
+
+                        feedbackDiv.innerHTML = tableData
+                    })                       
+            })
+        })
+    </script>
+</body>
+</html>

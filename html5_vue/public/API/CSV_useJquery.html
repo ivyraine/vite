@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSV to table using AJAX(jQuery)</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <h1 align="center">CSV to table using AJAX(jQuery)</h1>
+    <div align="center">
+        <button id="loadButton" class="btn btn-success">Load Data</button>
+    </div>
+
+    <div id="feedback" align="center"></div>
+
+    <script>
+        $(document).ready(function(){
+            $('#loadButton').click(function(){
+                $.ajax({
+                    // url: './XML_JSON_CSV/classmate.csv',
+                    url: './XML_JSON_CSV/101Tour.csv', 
+                    dataType: 'text', 
+                    success(res){ 
+                        // console.log(res);
+                        let resData = res.split(/\n|\r\n/)  // match on \n(enter) or \r\n(shift + enter)
+                        // let resData = res.split('\t')  // 如果使用 .tsv(目前稱為 .txt)                      
+
+                        let tableData = `<table class="table table-bordered table-striped">`
+                            for(let i = 0; i < resData.length; i++){
+                                let cellData = resData[i].split(',')
+                                tableData += `<tr>`
+                                    for(let j = 0; j < cellData.length; j++){
+                                        if(i == 0){
+                                            tableData += `<th>${cellData[j]}</th>`
+                                        }else{
+                                            tableData += `<td>${cellData[j]}</td>`
+                                        }
+                                    }
+                                tableData += `</tr>`
+                            }
+                            tableData += `</table>`
+
+
+
+                        $('#feedback').append(tableData)
+                    },
+                })
+                
+                // $.ajax({
+                //     url: '',    // 呼叫的網址或檔案
+                //     data: ,     // 傳送到 server 端的資料
+                //     type: ,     // GET 或 POST
+                //     dataType: , // 預期 Server 端回傳的資料格式(xml, html, script, json, jsonp, text(.csv))
+                //     success(res){ },
+                //     error(why){ },
+                //     complete(){ },
+                // })
+            })
+        })
+    </script>
+</body>
+</html>

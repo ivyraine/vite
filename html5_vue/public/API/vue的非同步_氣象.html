@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue 的非同步 -- 氣象</title>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
+    <style>
+        .location-card{
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+        }
+        .location-card h2{
+            margin-top: 0;
+            color: #333;
+        }
+        .location-card p{
+            margin-bottom: 5px;
+        }
+        .weather-info{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .weather-item{
+            background-color: #eee;
+            border-radius: 5px;
+            padding: 8px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Wx(天氣現象)、MaxT(最高溫度)、MinT(最低溫度)、CI(舒適度)、PoP(降雨機率) -->
+    <div id="app">
+        <h1 style="text-decoration: underline;">{{description}}</h1>
+
+        <div v-for="record in CWArecords" class="location-card">
+            <h2>{{record.locationName}}</h2>
+            <div class="weather-info">
+                <p class="weather-item">天氣現象 (Wx): {{record.weatherElement[0].time[0].parameter.parameterName}}</p>
+                <p class="weather-item">降雨機率 (PoP): {{record.weatherElement[1].time[0].parameter.parameterName}}%</p>
+                <p class="weather-item">
+                    氣溫: {{record.weatherElement[2].time[0].parameter.parameterName}}℃ ~
+                          {{record.weatherElement[4].time[0].parameter.parameterName}}℃
+                </p>
+                <p class="weather-item">舒適度 (CI): {{record.weatherElement[3].time[0].parameter.parameterName}}</p>
+            </div>
+        </div>
+<!-- 
+        <div>
+            <p>{{weatherDescription}}</p>
+            <p>{{minT}}℃ ~ {{maxT}}℃</p>
+        </div> -->
+    </div>
+
+    <script>
+        const { ref, onMounted } = Vue
+
+        const App = {
+            setup(){
+                const description = ref('')
+                const CWArecords = ref([])
+
+                // const locationName = ref('')
+                // const minT = ref(0)
+                // const maxT = ref(0)
+                // const weatherDescription = ref('')
+
+                onMounted(() => {   // 非同步放在生命週期的 onMounted() 階段
+                    // jQuery
+                    // $.getJSON('./F-C0032-001.json').then( res => {
+                    $.getJSON('https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-6A37E9AC-8AEB-4D14-9BAC-A5C370BD9AB7').then( res => {
+                        // console.log(res)
+                        // console.log(res.records.datasetDescription)
+                        // console.log(res.records.location)
+                        
+                        description.value = res.records.datasetDescription
+                        CWArecords.value = res.records.location
+                        // locationName.value = CWArecords.value[5].locationName
+                        // weatherDescription.value = CWArecords.value[5].weatherElement[0].time[0].parameter.parameterName
+                        // minT.value = CWArecords.value[5].weatherElement[2].time[0].parameter.parameterName
+                        // maxT.value = CWArecords.value[5].weatherElement[4].time[0].parameter.parameterName
+
+                    })      
+                })
+
+                return {
+                    description,
+                    CWArecords,
+                    // locationName,
+                    // minT, maxT, weatherDescription,
+                }
+            },
+        }
+        Vue.createApp(App).mount('#app')
+    </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+API 分兩種:
+- WebHooks: 目前 API 的串接
+- WebSocket
+
+非加密 & 加密
+- HTTP: HyperText Transfer Prototol(網路應用層的協定)
+- HTTPs: 加上 SSL 的服務
+---------------------------------------------------
+各種 API 以及關鍵字
+
+Public API
+https://github.com/public-apis/public-apis
+
+彼得潘的 API 整理
+https://medium.com/%E5%BD%BC%E5%BE%97%E6%BD%98%E7%9A%84-swift-ios-app-%E9%96%8B%E7%99%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E7%AD%94%E9%9B%86/%E7%AC%AC%E4%B8%89%E6%96%B9-api-%E6%95%B4%E7%90%86-115868a56959
+
+政府資料開放平臺 (open data)
+https://data.gov.tw/
+
+氣象資料開放平臺 (氣象 API)
+https://opendata.cwa.gov.tw/
+
+
+
+
+
+
+檢查 JSON 格式的正確與否
+JSON validator
+https://jsonformatter.curiousconcept.com/
+
+JSON viewer
+https://jsoneditoronline.org/
+
+台灣地圖
+- 中心點: 23.6978, 120.9605
+- 載入台灣的 GeoJSON 資料
+- leaflet: vue-leaflet
+    L.geoJSON()
+
+台灣地圖資料來源
+1 opendata 裡面關於台灣的國界資料
+    https://data.gov.tw/datasets/search?p=1&size=10&s=_score_desc&rft=%E9%84%89%E9%8E%AE%E5%B8%82%E5%8D%80%E7%95%8C%E7%B7%9A
+    https://data.gov.tw/datasets/search?p=1&size=10&s=_score_desc&rft=%E7%9B%B4%E8%BD%84%E5%B8%82%E7%B8%A3%E5%B8%82%E7%95%8C%E7%B7%9A
+
+2 g0v
+    https://github.com/g0v/twgeojson
+
+3 含台灣國界資料
+    https://www.naturalearthdata.com/
+
+4 台灣行政區 GEO 格式下載
+    https://gadm.org/
+
+---------------------------------------------------
+關於跨網域
+大部分的 API 禁止跨網域取得資料
+---------------------------------------------------
+同源政策 (Same-origin policy)
+    以下為不同源
+    http://
+    https://
+
+    https://maps.google.com
+    https://fonts.google.com
+
+    https://localhost:5500
+    https://localhost:5173
+
+跨網域存取 CORS (Cross-Origin Resource Sharing)
+
+解決方法: 設定 Access-Control-Allow-Origin 以及 Access-Control-Allow-Methods 兩個表頭資料
+- 第一種設定: Apache 的 .htaccess 檔案
+    Header add Access-Control-Allow-Origin "*"
+    Header add Access-Control-Allow-Methods "*"
+
+- 第二種設定: 個別的 PHP 檔案
+    header("Access-Control-Allow-Origin: *");
+    header("Access-Control-Allow-Methods: *");
+
+---------------------------------------------------
+解決方法: 
+    JSONP(JSON with Padding)
+    Fetch API CORS
+
