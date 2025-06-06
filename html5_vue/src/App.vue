@@ -2,13 +2,20 @@
 <template>
     <!-- <DragAndDrop /> -->
     <!-- <FileInfo /> -->
-    <TextRead />
+    <!-- <TextRead /> -->
+    <!-- <Weather /> -->
+    <!-- <WeatherAsyncAwait /> -->
+    <JSONPlaceholder />
 </template>
 
 <script setup>
 // import DragAndDrop from "./components/DragAndDrop.vue";
 // import FileInfo from "./components/FileInfo.vue";
-import TextRead from "./components/TextRead.vue";
+// import TextRead from "./components/TextRead.vue";
+// import Weather from "./components/Weather.vue";
+// import WeatherAsyncAwait from "./components/WeatherAsyncAwait.vue";
+import JSONPlaceholder from "./components/JSONPlaceholder.vue";
+
 </script>
 
 

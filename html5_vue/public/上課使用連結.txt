@@ -1,0 +1,148 @@
+※ 雲端硬碟
+https://drive.google.com/drive/folders/1Pv1fyTONzc-Gm5nGGfOtA5bOjID-wmpz?usp=drive_link
+
+※ 歷屆專題
+https://docs.google.com/document/d/13sfem3xs_4eCyGRICab7BgicBTvrZEHJhRvScZQiX0s/mobilebasic
+
+網站範例
+https://www.free-css.com/free-css-templates
+https://tympanus.net/codrops/
+
+※ 免費 + 付費圖庫
+https://www.freepik.com/
+https://unsplash.com/
+https://pixabay.com/
+https://www.pexels.com/zh-tw/  免費商用
+
+假圖
+https://fakeimg.pl/
+
+icon
+https://icons8.com/
+https://fontawesome.com/
+https://www.flaticon.com/
+
+svg
+https://undraw.co/  免費商用
+
+Animation
+https://storyset.com/
+
+loading image
+https://loading.io/
+
+圖片壓縮工具
+https://compressor.io/
+
+
+--------------------------------------------------------------------
+※ 再補充
+[日系]
+日本手繪插圖
+https://www.irasutoya.com/
+
+對話框
+https://fukidesign.com/
+
+集中線
+https://mangasozai.com/
+
+貼圖為主
+https://stampo.fun/
+
+鳥獸
+https://chojugiga.com/
+
+能隨意組合改變不同造型的圖檔
+https://pictogram2.com/?lang=en
+
+https://www.pakutaso.com/
+
+[美食]
+https://www.foodiesfeed.com/
+
+[以人物為主的手繪圖庫]
+https://www.openpeeps.com/
+https://www.humaaans.com/
+
+[logo 字型]
+https://www.namecheap.com/logo-maker/
+
+https://formostock.com/
+https://mixkit.co/free-stock-art/
+
+--------------------------------------------------------------------
+
+
+
+
+
+※ 顏色選擇
+https://color.adobe.com/zh/explore
+https://coolors.co/
+
+※ 免費字體
+粉圓體 https://justfont.com/huninn/
+清松手寫體 https://lis.chu.edu.tw/p/406-1052-25210,r11.php?Lang=zh-tw
+
+※ 專題可能用到
+html2canvas
+https://html2canvas.hertzen.com/
+
+統計圖表
+https://c3js.org/
+
+留言板工具
+https://summernote.org/
+https://ckeditor.com/
+
+JSON validator
+https://jsonformatter.curiousconcept.com/
+
+JSON viewer
+https://jsoneditoronline.org/
+
+https://easings.net/
+http://velocityjs.org/
+
+https://roadmap.sh/
+--------------------------------
+線上編輯器
+https://summernote.org/
+https://ckeditor.com/
+
+線上的 mail server
+EmailJS
+https://www.emailjs.com/
+
+動態圖表
+c3.js
+
+第三方支付
+綠界 | 藍新 | 紅陽
+Line Pay API
+Payment Request API
+https://blog.techbridge.cc/2017/10/14/payment-request-api/
+
+產生信用卡卡號
+https://www.getcreditcardnumbers.com/
+
+假資料 fake | dummy JSON data
+https://dummyjson.com/
+https://fakestoreapi.com/
+https://reqres.in/
+https://jsonplaceholder.typicode.com/
+
+google 「let's encrypt」可以免費申請 SSL
+
+
+canvasSketch
+
+Youtuber
+CSScoke
+https://www.youtube.com/c/csscoke
+
+Alex 宅幹嘛
+https://www.youtube.com/channel/UCEL8871qFEakpqYpwBSjHNA
+
+

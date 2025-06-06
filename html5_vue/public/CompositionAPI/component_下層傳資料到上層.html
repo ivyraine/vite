@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    <div id="app"> <!-- HTML DOM template -->
+        <the-button @my-click="fromChild"></the-button>
+    </div>
+
+    <script>
+        const { defineComponent, ref } = Vue
+       
+        //定義組件
+        const TheButton = defineComponent({
+            template: `<button @click="clicked">Click</button>`,
+           
+
+            setup(props, {emit}) {
+                const clicked = () => {
+                    // emit('自訂事件', 值1, 值2, ...)
+                    emit('my-click', 100)
+                }
+                return {
+                    clicked,
+                }
+            }
+        })
+
+
+
+        const vm = Vue.createApp({
+            setup(){
+                const fromChild = (x) => {
+                    alert(`Hello, Parent! Give me ${x} dollars.`)
+                }
+                return {
+                    fromChild,
+                }
+            },
+        })
+        
+        //註冊組件
+        vm.component('the-button', TheButton)
+
+        vm.mount('#app')
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    <div id="app"> <!-- HTML DOM template -->
+        <my-component sayhello="Hello" text="Vue"></my-component>
+        <your-component say-hi="Hi" the-text="Peter"></your-component>
+    </div>
+
+    <script>
+        const { defineComponent, ref } = Vue
+       
+        //定義組件
+        const MyComponent = defineComponent({
+            props: ['sayhello', 'text'],
+            template: `
+                <h1 style="color:red">{{sayhello}} {{text}}</h1>
+                <!-- <p>{{score}}</p> -->
+            `,
+
+            setup() {
+                const score = ref(0)
+                return {
+                    score, //score: score, 
+                }
+            }
+        })
+        const YourComponent = defineComponent({
+            props: ['sayHi', 'theText'],
+            template: `
+                <h1 style="color:green">{{sayHi}} {{theText}}</h1>
+                <!-- <p>{{score}}</p> -->
+            `,       
+        })
+
+        const vm = Vue.createApp({})
+        
+        //引用組件
+        vm.component('my-component', MyComponent)
+        vm.component('your-component', YourComponent)
+
+        vm.mount('#app')
+    </script>
+
+</body>
+</html>
