@@ -3,19 +3,34 @@
     <!-- <DragAndDrop /> -->
     <!-- <FileInfo /> -->
     <!-- <TextRead /> -->
+    <!-- <ImageRead /> -->
+    <!-- <FaceShot /> -->
+    <!-- <UploadYourImage /> -->
+    <!-- <ImageDrag /> -->
     <!-- <Weather /> -->
     <!-- <WeatherAsyncAwait /> -->
-    <JSONPlaceholder />
+    <!-- <JSONPlaceholder /> -->
+    <!-- <Wrapper /> -->
+    <!-- <User /> -->
+    <CounterControl />
+    <CounterDisplay />
 </template>
 
 <script setup>
 // import DragAndDrop from "./components/DragAndDrop.vue";
 // import FileInfo from "./components/FileInfo.vue";
 // import TextRead from "./components/TextRead.vue";
+// import ImageRead from "./components/ImageRead.vue";
+// import FaceShot from "./components/FaceShot.vue";
+// import UploadYourImage from "./components/UploadYourImage.vue";
+// import ImageDrag from "./components/ImageDrag.vue";
 // import Weather from "./components/Weather.vue";
 // import WeatherAsyncAwait from "./components/WeatherAsyncAwait.vue";
-import JSONPlaceholder from "./components/JSONPlaceholder.vue";
-
+// import JSONPlaceholder from "./components/JSONPlaceholder.vue";
+// import Wrapper from "./components/useMitt/Wrapper.vue";
+// import User from "./components/usePinia/User.vue";
+import CounterControl from "./components/usePinia/CounterControl.vue";
+import CounterDisplay from "./components/usePinia/CounterDisplay.vue";
 </script>
 
 
