@@ -12,8 +12,9 @@
     <!-- <JSONPlaceholder /> -->
     <!-- <Wrapper /> -->
     <!-- <User /> -->
-    <CounterControl />
-    <CounterDisplay />
+    <!-- <CounterControl /> -->
+    <!-- <CounterDisplay /> -->
+    <ExcelEditor />
 </template>
 
 <script setup>
@@ -29,8 +30,9 @@
 // import JSONPlaceholder from "./components/JSONPlaceholder.vue";
 // import Wrapper from "./components/useMitt/Wrapper.vue";
 // import User from "./components/usePinia/User.vue";
-import CounterControl from "./components/usePinia/CounterControl.vue";
-import CounterDisplay from "./components/usePinia/CounterDisplay.vue";
+// import CounterControl from "./components/usePinia/CounterControl.vue";
+// import CounterDisplay from "./components/usePinia/CounterDisplay.vue";
+import ExcelEditor from "./components/ExcelEditor.vue";
 </script>
 
 
